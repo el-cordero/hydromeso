@@ -8,7 +8,7 @@ Authors@R:
            comment = c(ORCID = "0009-0003-8025-283X"))
 Description: Classifies hydraulic conditions into nominal fluvial mesohabitat
     categories using water depth and velocity. It implements the eight-class
-    scheme of Cordero and Harris (2026) <doi:10.2139/ssrn.7100727>, supports
+    scheme in the preprint by Cordero and Harris <doi:10.2139/ssrn.7100727>, supports
     validated rectangular custom schemes, and works with tabular and spatial
     data through 'terra'. Outputs describe hydraulic classes and do not by
     themselves establish biological habitat quality or species occurrence.

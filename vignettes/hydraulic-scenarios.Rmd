@@ -22,6 +22,7 @@ rejected. Positional pairing is available only when explicitly requested.
 ```{r}
 scenarios <- classify_mesohabitat_series(depth, velocity)
 summarize_mesohabitat(scenarios)
+plot_mesohabitat(scenarios)
 ```
 
 The following operation takes median depth and median velocity first and then
@@ -30,6 +31,7 @@ classifies those two surfaces:
 ```{r}
 median_result <- mesohabitat_from_median_hydraulics(depth, velocity)
 names(median_result)
+plot_mesohabitat(median_result$mesohabitat_from_median_hydraulics)
 ```
 
 This is mesohabitat derived from median hydraulics, not “median mesohabitat.”
@@ -40,4 +42,3 @@ lowest class identifier as a deterministic identifier-only convention.
 modal_mesohabitat(scenarios, ties = "NA")
 compare_mesohabitat(scenarios[[1]], scenarios[[2]])
 ```
-

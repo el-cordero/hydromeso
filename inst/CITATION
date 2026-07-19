@@ -14,8 +14,8 @@ bibentry(
   bibtype = "Unpublished",
   title = "Semi-Supervised and Supervised Machine Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data",
   author = c(person("Elvin", "Cordero"), person("Aubrey", "Harris")),
-  year = "2026",
-  note = "SSRN preprint, posted July 11, 2026",
+  year = "Preprint",
+  note = "Preprint posted to SSRN",
   doi = "10.2139/ssrn.7100727"
 )
 

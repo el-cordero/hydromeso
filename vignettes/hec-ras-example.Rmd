@@ -20,6 +20,7 @@ in for file-backed inputs:
 h <- mesohabitat_example_rasters()
 terra::compareGeom(h$depth, h$velocity)
 classes <- classify_mesohabitat_raster(h$depth, h$velocity)
+plot_mesohabitat(classes)
 ```
 
 Assigning a known missing CRS describes existing coordinates; it does not move
@@ -35,6 +36,7 @@ mask are applied:
 aoi <- terra::as.polygons(terra::ext(500000, 500020, 4400000, 4400020),
                           crs = terra::crs(h$depth))
 cropped <- classify_mesohabitat_raster(h$depth, h$velocity, aoi = aoi)
+plot_mesohabitat(cropped)
 ```
 
 For multiple dates, use unique matching names rather than relying on file

@@ -80,7 +80,7 @@
 #'   infinite observations. Values are never clamped or replaced with zero.
 #' @return A data frame containing depth, velocity, integer
 #'   `mesohabitat_class`, and unordered factor `mesohabitat`.
-#' @references Cordero, E. and Harris, A. (2026). SSRN.
+#' @references Cordero, E. and Harris, A. (Preprint). SSRN.
 #'   \doi{10.2139/ssrn.7100727}.
 #' @seealso [classify_mesohabitat()], [classify_mesohabitat_table()],
 #'   [convert_hydraulic_units()]
@@ -103,4 +103,3 @@ classify_mesohabitat_values <- function(depth, velocity,
     stringsAsFactors = FALSE
   )
 }
-

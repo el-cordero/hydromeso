@@ -47,3 +47,10 @@ The custom scheme can be supplied to every table, vector, raster, and scenario
 classifier. Users are responsible for scientifically justifying and reporting
 custom thresholds and units.
 
+```{r custom-raster-figure, fig.cap="Example raster classified with the custom two-class scheme."}
+h <- mesohabitat_example_rasters()
+custom_raster <- classify_mesohabitat_raster(
+  h$depth, h$velocity, scheme = custom
+)
+plot_mesohabitat(custom_raster, scheme = custom)
+```

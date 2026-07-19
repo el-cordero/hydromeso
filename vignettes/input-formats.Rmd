@@ -25,7 +25,8 @@ uses short class-field names.
 
 ```{r}
 v <- mesohabitat_example_vector()
-classify_mesohabitat_vector(v, "depth", "velocity")
+classified_v <- classify_mesohabitat_vector(v, "depth", "velocity")
+plot_mesohabitat(classified_v)
 ```
 
 Rasters can be separate objects/paths or selected layers in one multilayer
@@ -37,4 +38,3 @@ coordinates and reports that distinction.
 
 An AOI is projected to the raster CRS if necessary. `mask_aoi = TRUE` performs
 both a crop and polygon mask; `FALSE` performs only a rectangular crop.
-

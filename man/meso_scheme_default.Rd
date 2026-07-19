@@ -11,7 +11,7 @@ A validated \code{meso_scheme} with eight nominal classes.
 }
 \description{
 Returns the exact depth-velocity classification used by Cordero and Harris
-(2026). The broader depth-velocity framework is informed by Aadland (1993),
+(Preprint). The broader depth-velocity framework is informed by Aadland (1993),
 whose paper describes six habitat types and should not be read as the source
 of the two added high-velocity class names. Inputs must be metres and metres
 per second unless explicitly converted before classification.
@@ -20,7 +20,7 @@ per second unless explicitly converted before classification.
 meso_scheme_default()
 }
 \references{
-Cordero, E. and Harris, A. (2026). \emph{Semi-Supervised and Supervised Machine
+Cordero, E. and Harris, A. (Preprint). \emph{Semi-Supervised and Supervised Machine
 Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data}.
 SSRN. \doi{10.2139/ssrn.7100727}.
 

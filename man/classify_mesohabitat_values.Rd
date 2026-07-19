@@ -37,7 +37,7 @@ velocity are classified mathematically (Class 1 under the default scheme).
 classify_mesohabitat_values(c(0.2, 0.61, 1.37), c(0.1, 0.61, 0.3))
 }
 \references{
-Cordero, E. and Harris, A. (2026). SSRN.
+Cordero, E. and Harris, A. (Preprint). SSRN.
 \doi{10.2139/ssrn.7100727}.
 }
 \seealso{

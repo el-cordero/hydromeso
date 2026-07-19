@@ -54,14 +54,14 @@ meso_scheme <- function(rules,
 #' Default eight-class fluvial mesohabitat scheme
 #'
 #' Returns the exact depth-velocity classification used by Cordero and Harris
-#' (2026). The broader depth-velocity framework is informed by Aadland (1993),
+#' (Preprint). The broader depth-velocity framework is informed by Aadland (1993),
 #' whose paper describes six habitat types and should not be read as the source
 #' of the two added high-velocity class names. Inputs must be metres and metres
 #' per second unless explicitly converted before classification.
 #'
 #' @return A validated `meso_scheme` with eight nominal classes.
 #' @references
-#' Cordero, E. and Harris, A. (2026). *Semi-Supervised and Supervised Machine
+#' Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and Supervised Machine
 #' Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data*.
 #' SSRN. \doi{10.2139/ssrn.7100727}.
 #'
@@ -96,7 +96,7 @@ meso_scheme_default <- function() {
     depth_units = "m",
     velocity_units = "m/s",
     citation = paste(
-      "Cordero, E. and Harris, A. (2026). Semi-Supervised and Supervised",
+      "Cordero, E. and Harris, A. (Preprint). Semi-Supervised and Supervised",
       "Machine Learning Approaches to Predicting Fluvial Mesohabitats from",
       "Satellite Data. SSRN."
     ),
@@ -127,4 +127,3 @@ meso_scheme_rules <- function(x) {
   validate_meso_scheme(x)
   x$rules
 }
-

@@ -39,10 +39,10 @@ summarize_mesohabitat(tab)
 h <- mesohabitat_example_rasters()
 r <- classify_mesohabitat_raster(h$depth, h$velocity)
 summarize_mesohabitat(r)
+plot_mesohabitat(r)
 out <- file.path(tempdir(), "mesohabitat.tif")
 write_mesohabitat(r, out, sidecar = TRUE, overwrite = TRUE)
 ```
 
 The classes describe hydraulic conditions only. They are not biological
 habitat-suitability scores, and the integer IDs are nominal.
-

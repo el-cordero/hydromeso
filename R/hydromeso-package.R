@@ -2,7 +2,7 @@
 #'
 #' `hydromeso` applies validated rectangular depth-velocity rules to numeric,
 #' tabular, vector, and raster hydraulic data. The default eight-class scheme
-#' implements the thresholds used by Cordero and Harris (2026), with the broader
+#' implements the thresholds used by Cordero and Harris (Preprint), with the broader
 #' depth-velocity mesohabitat framework informed by Aadland (1993).
 #'
 #' The output is a hydraulic mesohabitat classification based on depth and
@@ -15,9 +15,9 @@
 #' nominal identifiers rather than ordinal scores.
 #'
 #' @references
-#' Cordero, E. and Harris, A. (2026). *Semi-Supervised and Supervised Machine
+#' Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and Supervised Machine
 #' Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data*.
-#' SSRN, posted July 11, 2026. \doi{10.2139/ssrn.7100727}.
+#' SSRN preprint. \doi{10.2139/ssrn.7100727}.
 #'
 #' Aadland, L. P. (1993). Stream Habitat Types: Their Fish Assemblages and
 #' Relationship to Flow. *North American Journal of Fisheries Management*,
@@ -26,4 +26,3 @@
 #' @seealso [meso_scheme_default()], [classify_mesohabitat()]
 #' @keywords internal
 "_PACKAGE"
-

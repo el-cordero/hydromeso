@@ -156,7 +156,7 @@ how dry cells are represented in their own HEC-RAS or other model
 outputs; `dry_threshold = NULL` preserves the exact scheme and
 classifies zero depth and zero velocity as Class 1.
 
-The default eight-class table is from Cordero and Harris (2026),
+The default eight-class table is from Cordero and Harris (Preprint),
 *Semi-Supervised and Supervised Machine Learning Approaches to
 Predicting Fluvial Mesohabitats from Satellite Data*,
 [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727). The

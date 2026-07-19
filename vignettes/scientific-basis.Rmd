@@ -1,8 +1,6 @@
 ---
 title: "Scientific basis and interpretation"
 output: rmarkdown::html_vignette
-bibliography: references.bib
-link-citations: true
 vignette: >
   %\VignetteIndexEntry{Scientific basis and interpretation}
   %\VignetteEngine{knitr::rmarkdown}
@@ -10,8 +8,8 @@ vignette: >
 ---
 
 The default eight-class scheme implements the depth and velocity thresholds
-used by Cordero and Harris [@cordero2026], with the broader depth-velocity
-mesohabitat framework informed by Aadland (1993) [@aadland1993]. Cordero and
+used by Cordero and Harris (Preprint), with the broader depth-velocity
+mesohabitat framework informed by Aadland (1993). Cordero and
 Harris define the exact eight rows implemented by the package, including
 “Faster than Raceway” and “Faster than Deep Pool.”
 
@@ -35,5 +33,19 @@ NULL` preserves the mathematical scheme, including Class 1 for zero depth and
 zero velocity. Classifying median hydraulic surfaces is not the same as taking
 the modal class through time. Class IDs are identifiers, not ecological ranks.
 
+## Default classification scheme
+
+```{r scheme-figure, fig.cap="The exact eight-class depth-velocity scheme implemented by hydromeso."}
+library(hydromeso)
+plot_meso_scheme()
+```
+
 ## References
 
+- Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and Supervised
+  Machine Learning Approaches to Predicting Fluvial Mesohabitats from Satellite
+  Data*. SSRN. [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727).
+- Aadland, L. P. (1993). Stream Habitat Types: Their Fish Assemblages and
+  Relationship to Flow. *North American Journal of Fisheries Management*,
+  13(4), 790–806.
+  [doi:10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2](https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2).
