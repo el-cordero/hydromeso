@@ -60,6 +60,14 @@ test_that("raster output matches the common engine and has categories", {
   expect_equal(as.integer(terra::values(got)[, 1]), tab$mesohabitat_class)
 })
 
+test_that("plot legend layout options are validated", {
+  z <- .tiny_hydraulics()
+  classified <- classify_mesohabitat_raster(z$d, z$v)
+  expect_error(plot_mesohabitat(classified, legend = NA), "TRUE or FALSE")
+  expect_error(plot_mesohabitat(classified, legend_ncol = 0), "positive integer")
+  expect_error(plot_mesohabitat(classified, legend_cex = 0), "positive number")
+})
+
 test_that("raster geometry mismatches require explicit alignment", {
   z <- .tiny_hydraulics()
   coarse <- terra::aggregate(z$v, 2)

@@ -7,6 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r plot-options, include=FALSE}
+knitr::opts_chunk$set(fig.bg = "white", dev.args = list(bg = "white"))
+```
+
 The default eight-class scheme implements the depth and velocity thresholds
 used by Cordero and Harris (Preprint), with the broader depth-velocity
 mesohabitat framework informed by Aadland (1993). Cordero and

@@ -7,6 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r plot-options, include=FALSE}
+knitr::opts_chunk$set(fig.bg = "white", dev.args = list(bg = "white"))
+```
+
 ```{r setup}
 library(hydromeso)
 h <- mesohabitat_example_rasters()

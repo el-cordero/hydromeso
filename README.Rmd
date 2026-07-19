@@ -5,7 +5,8 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", fig.path = "man/figures/README-",
-  fig.alt = "Depth-velocity diagram of the eight default mesohabitat classes"
+  fig.alt = "Depth-velocity diagram of the eight default mesohabitat classes",
+  fig.bg = "white", dev.args = list(bg = "white")
 )
 library(hydromeso)
 ```

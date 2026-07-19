@@ -12,6 +12,9 @@ plot_mesohabitat(
   label_col = "mesohabitat",
   scheme = .scheme_from_object(x),
   palette = mesohabitat_palette(scheme),
+  legend = TRUE,
+  legend_ncol = 4,
+  legend_cex = 0.75,
   ...
 )
 }
@@ -25,6 +28,12 @@ plot_mesohabitat(
 \item{scheme}{A \code{meso_scheme}.}
 
 \item{palette}{Named colors.}
+
+\item{legend}{Show one shared legend below the plot or plot panels.}
+
+\item{legend_ncol}{Number of columns in the shared legend.}
+
+\item{legend_cex}{Legend text size multiplier.}
 
 \item{...}{Additional plotting arguments.}
 }
