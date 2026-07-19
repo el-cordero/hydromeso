@@ -61,12 +61,10 @@
     
     
 <p>The default eight-class scheme implements the depth and velocity
-thresholds used by Cordero and Harris <span class="citation">(<a href="#ref-cordero2026">Cordero and Harris 2026</a>)</span>, with the
-broader depth-velocity mesohabitat framework informed by Aadland (1993)
-<span class="citation">(<a href="#ref-aadland1993">Aadland
-1993</a>)</span>. Cordero and Harris define the exact eight rows
-implemented by the package, including “Faster than Raceway” and “Faster
-than Deep Pool.”</p>
+thresholds used by Cordero and Harris (Preprint), with the broader
+depth-velocity mesohabitat framework informed by Aadland (1993). Cordero
+and Harris define the exact eight rows implemented by the package,
+including “Faster than Raceway” and “Faster than Deep Pool.”</p>
 <p>Aadland studied fish assemblages, habitat-use and habitat-preference
 guilds, and habitat relationships with flow in six Minnesota streams.
 The original paper describes six types: shallow pool, slow riffle, fast
@@ -86,23 +84,32 @@ sharp class thresholds.</p>
 including Class 1 for zero depth and zero velocity. Classifying median
 hydraulic surfaces is not the same as taking the modal class through
 time. Class IDs are identifiers, not ecological ranks.</p>
-<div class="section level2 unnumbered">
-<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+<div class="section level2">
+<h2 id="default-classification-scheme">Default classification scheme<a class="anchor" aria-label="anchor" href="#default-classification-scheme"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-aadland1993" class="csl-entry">
-Aadland, Luther P. 1993. <span>“Stream Habitat Types: Their Fish
-Assemblages and Relationship to Flow.”</span> <em>North American Journal
-of Fisheries Management</em> 13 (4): 790–806. <a href="https://doi.org/10.1577/1548-8675(1993)013%3C0790:SHTTFA%3E2.3.CO;2" class="external-link">https://doi.org/10.1577/1548-8675(1993)013&lt;0790:SHTTFA&gt;2.3.CO;2</a>.
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://el-cordero.github.io/hydromeso/">hydromeso</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_meso_scheme.html">plot_meso_scheme</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="scientific-basis_files/figure-html/scheme-figure-1.png" class="r-plt" alt="The exact eight-class depth-velocity scheme implemented by hydromeso." width="700"><p class="caption">
+The exact eight-class depth-velocity scheme implemented by hydromeso.
+</p>
 </div>
-<div id="ref-cordero2026" class="csl-entry">
-Cordero, Elvin, and Aubrey Harris. 2026. <span>“Semi-Supervised and
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<ul>
+<li>Cordero, E. and Harris, A. (Preprint). <em>Semi-Supervised and
 Supervised Machine Learning Approaches to Predicting Fluvial
-Mesohabitats from Satellite Data.”</span> <a href="https://doi.org/10.2139/ssrn.7100727" class="external-link">https://doi.org/10.2139/ssrn.7100727</a>.
+Mesohabitats from Satellite Data</em>. SSRN. <a href="https://doi.org/10.2139/ssrn.7100727" class="external-link">doi:10.2139/ssrn.7100727</a>.</li>
+<li>Aadland, L. P. (1993). Stream Habitat Types: Their Fish Assemblages
+and Relationship to Flow. <em>North American Journal of Fisheries
+Management</em>, 13(4), 790–806. <a href="https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2" class="external-link">doi:10.1577/1548-8675(1993)013&lt;0790:SHTTFA&gt;2.3.CO;2</a>.</li>
+</ul>
 </div>
-</div>
-</div>
-  </main>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

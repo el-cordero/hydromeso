@@ -1,11 +1,10 @@
 # Scientific basis and interpretation
 
 The default eight-class scheme implements the depth and velocity
-thresholds used by Cordero and Harris ([Cordero and Harris
-2026](#ref-cordero2026)), with the broader depth-velocity mesohabitat
-framework informed by Aadland (1993) ([Aadland 1993](#ref-aadland1993)).
-Cordero and Harris define the exact eight rows implemented by the
-package, including “Faster than Raceway” and “Faster than Deep Pool.”
+thresholds used by Cordero and Harris (Preprint), with the broader
+depth-velocity mesohabitat framework informed by Aadland (1993). Cordero
+and Harris define the exact eight rows implemented by the package,
+including “Faster than Raceway” and “Faster than Deep Pool.”
 
 Aadland studied fish assemblages, habitat-use and habitat-preference
 guilds, and habitat relationships with flow in six Minnesota streams.
@@ -29,13 +28,26 @@ Class 1 for zero depth and zero velocity. Classifying median hydraulic
 surfaces is not the same as taking the modal class through time. Class
 IDs are identifiers, not ecological ranks.
 
+## Default classification scheme
+
+``` r
+
+library(hydromeso)
+plot_meso_scheme()
+```
+
+![The exact eight-class depth-velocity scheme implemented by
+hydromeso.](scientific-basis_files/figure-html/scheme-figure-1.png)
+
+The exact eight-class depth-velocity scheme implemented by hydromeso.
+
 ## References
 
-Aadland, Luther P. 1993. “Stream Habitat Types: Their Fish Assemblages
-and Relationship to Flow.” *North American Journal of Fisheries
-Management* 13 (4): 790–806.
-<https://doi.org/10.1577/1548-8675(1993)013%3C0790:SHTTFA%3E2.3.CO;2>.
-
-Cordero, Elvin, and Aubrey Harris. 2026. “Semi-Supervised and Supervised
-Machine Learning Approaches to Predicting Fluvial Mesohabitats from
-Satellite Data.” <https://doi.org/10.2139/ssrn.7100727>.
+- Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and Supervised
+  Machine Learning Approaches to Predicting Fluvial Mesohabitats from
+  Satellite Data*. SSRN.
+  [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727).
+- Aadland, L. P. (1993). Stream Habitat Types: Their Fish Assemblages
+  and Relationship to Flow. *North American Journal of Fisheries
+  Management*, 13(4), 790–806.
+  [doi:10.1577/1548-8675(1993)013\<0790:SHTTFA\>2.3.CO;2](https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2).

@@ -107,18 +107,24 @@ requested.</p>
 <span><span class="co">## 14      0.0001000800 0.02473032       12.5</span></span>
 <span><span class="co">## 15      0.0001000800 0.02473032       12.5</span></span>
 <span><span class="co">## 16      0.0001000800 0.02473032       12.5</span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">)</span></span></code></pre></div>
+<p><img src="hydraulic-scenarios_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="700"></p>
 <p>The following operation takes median depth and median velocity first
 and then classifies those two surfaces:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">median_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mesohabitat_from_median_hydraulics.html">mesohabitat_from_median_hydraulics</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">velocity</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">median_result</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] "median_depth"                       "median_velocity"                   </span></span>
 <span><span class="co">## [3] "mesohabitat_from_median_hydraulics"</span></span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">median_result</span><span class="op">$</span><span class="va">mesohabitat_from_median_hydraulics</span><span class="op">)</span></span></code></pre></div>
+<p><img src="hydraulic-scenarios_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="" width="700"></p>
 <p>This is mesohabitat derived from median hydraulics, not “median
 mesohabitat.” The modal nominal class is a different operation. Ties can
 return <code>NA</code> or the lowest class identifier as a deterministic
 identifier-only convention.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/modal_mesohabitat.html">modal_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span>, ties <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## class       : SpatRaster</span></span>
 <span><span class="co">## size        : 2, 4, 1  (nrow, ncol, nlyr)</span></span>
@@ -130,7 +136,7 @@ identifier-only convention.</p>
 <span><span class="co">## name        :     modal_mesohabitat</span></span>
 <span><span class="co">## min value   :          Shallow Pool</span></span>
 <span><span class="co">## max value   : Faster than Deep Pool</span></span></code></pre>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_mesohabitat.html">compare_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">scenarios</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $transitions</span></span>
 <span><span class="co">##   from_class to_class cell_count  area_m2</span></span>

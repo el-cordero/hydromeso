@@ -45,7 +45,7 @@ and unordered factor `mesohabitat`.
 
 ## References
 
-Cordero, E. and Harris, A. (2026). SSRN.
+Cordero, E. and Harris, A. (Preprint). SSRN.
 [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727) .
 
 ## See also

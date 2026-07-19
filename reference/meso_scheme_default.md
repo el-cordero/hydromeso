@@ -1,7 +1,7 @@
 # Default eight-class fluvial mesohabitat scheme
 
 Returns the exact depth-velocity classification used by Cordero and
-Harris (2026). The broader depth-velocity framework is informed by
+Harris (Preprint). The broader depth-velocity framework is informed by
 Aadland (1993), whose paper describes six habitat types and should not
 be read as the source of the two added high-velocity class names. Inputs
 must be metres and metres per second unless explicitly converted before
@@ -19,7 +19,7 @@ A validated `meso_scheme` with eight nominal classes.
 
 ## References
 
-Cordero, E. and Harris, A. (2026). *Semi-Supervised and Supervised
+Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and Supervised
 Machine Learning Approaches to Predicting Fluvial Mesohabitats from
 Satellite Data*. SSRN.
 [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727) .

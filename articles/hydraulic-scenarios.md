@@ -55,6 +55,13 @@ summarize_mesohabitat(scenarios)
     ## 15      0.0001000800 0.02473032       12.5
     ## 16      0.0001000800 0.02473032       12.5
 
+``` r
+
+plot_mesohabitat(scenarios)
+```
+
+![](hydraulic-scenarios_files/figure-html/unnamed-chunk-1-1.png)
+
 The following operation takes median depth and median velocity first and
 then classifies those two surfaces:
 
@@ -66,6 +73,13 @@ names(median_result)
 
     ## [1] "median_depth"                       "median_velocity"                   
     ## [3] "mesohabitat_from_median_hydraulics"
+
+``` r
+
+plot_mesohabitat(median_result$mesohabitat_from_median_hydraulics)
+```
+
+![](hydraulic-scenarios_files/figure-html/unnamed-chunk-2-1.png)
 
 This is mesohabitat derived from median hydraulics, not “median
 mesohabitat.” The modal nominal class is a different operation. Ties can

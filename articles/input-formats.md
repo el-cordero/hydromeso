@@ -42,20 +42,11 @@ Shapefile export warns and uses short class-field names.
 ``` r
 
 v <- mesohabitat_example_vector()
-classify_mesohabitat_vector(v, "depth", "velocity")
+classified_v <- classify_mesohabitat_vector(v, "depth", "velocity")
+plot_mesohabitat(classified_v)
 ```
 
-    ## class       : SpatVector
-    ## geometry    : points
-    ## dimensions  : 18, 4  (geometries, attributes)
-    ## extent      : 500000, 500170, 4400000, 4400170  (xmin, xmax, ymin, ymax)
-    ## coord. ref. : WGS 84 / UTM zone 15N (EPSG:32615)
-    ## names       : depth velocity mesohabitat_class  mesohabitat
-    ## type        : <num>    <num>             <int>        <chr>
-    ## values      :   0.2      0.1                 1 Shallow Pool
-    ##                 0.8      0.1                 2  Medium Pool
-    ##                 1.5      0.1                 3    Deep Pool
-    ##               ...
+![](input-formats_files/figure-html/unnamed-chunk-2-1.png)
 
 Rasters can be separate objects/paths or selected layers in one
 multilayer raster. Geometry mismatches fail by default. With

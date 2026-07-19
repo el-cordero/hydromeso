@@ -61,3 +61,17 @@ classify_mesohabitat_values(1, 0.5, gap_scheme)
 The custom scheme can be supplied to every table, vector, raster, and
 scenario classifier. Users are responsible for scientifically justifying
 and reporting custom thresholds and units.
+
+``` r
+
+h <- mesohabitat_example_rasters()
+custom_raster <- classify_mesohabitat_raster(
+  h$depth, h$velocity, scheme = custom
+)
+plot_mesohabitat(custom_raster, scheme = custom)
+```
+
+![Example raster classified with the custom two-class
+scheme.](custom-classifications_files/figure-html/custom-raster-figure-1.png)
+
+Example raster classified with the custom two-class scheme.

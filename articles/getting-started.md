@@ -88,6 +88,13 @@ summarize_mesohabitat(r)
 
 ``` r
 
+plot_mesohabitat(r)
+```
+
+![](getting-started_files/figure-html/unnamed-chunk-3-1.png)
+
+``` r
+
 out <- file.path(tempdir(), "mesohabitat.tif")
 write_mesohabitat(r, out, sidecar = TRUE, overwrite = TRUE)
 ```

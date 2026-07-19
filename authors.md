@@ -20,16 +20,16 @@ and Velocity*. R package version 0.1.0.
       note = {R package version 0.1.0},
     }
 
-Cordero E, Harris A (2026). “Semi-Supervised and Supervised Machine
+Cordero E, Harris A (Preprint). “Semi-Supervised and Supervised Machine
 Learning Approaches to Predicting Fluvial Mesohabitats from Satellite
 Data.” [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727),
-SSRN preprint, posted July 11, 2026.
+Preprint posted to SSRN.
 
     @Unpublished{,
       title = {Semi-Supervised and Supervised Machine Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data},
       author = {Elvin Cordero and Aubrey Harris},
-      year = {2026},
-      note = {SSRN preprint, posted July 11, 2026},
+      year = {Preprint},
+      note = {Preprint posted to SSRN},
       doi = {10.2139/ssrn.7100727},
     }
 

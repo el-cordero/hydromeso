@@ -101,6 +101,17 @@ representatives of every interval, not a random sample.</p>
 <p>The custom scheme can be supplied to every table, vector, raster, and
 scenario classifier. Users are responsible for scientifically justifying
 and reporting custom thresholds and units.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mesohabitat_example_rasters.html">mesohabitat_example_rasters</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">custom_raster</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_raster.html">classify_mesohabitat_raster</a></span><span class="op">(</span></span>
+<span>  <span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span>, scheme <span class="op">=</span> <span class="va">custom</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">custom_raster</span>, scheme <span class="op">=</span> <span class="va">custom</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="custom-classifications_files/figure-html/custom-raster-figure-1.png" class="r-plt" alt="Example raster classified with the custom two-class scheme." width="700"><p class="caption">
+Example raster classified with the custom two-class scheme.
+</p>
+</div>
   </main>
 </div>
 

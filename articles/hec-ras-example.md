@@ -21,7 +21,10 @@ terra::compareGeom(h$depth, h$velocity)
 ``` r
 
 classes <- classify_mesohabitat_raster(h$depth, h$velocity)
+plot_mesohabitat(classes)
 ```
+
+![](hec-ras-example_files/figure-html/unnamed-chunk-1-1.png)
 
 Assigning a known missing CRS describes existing coordinates; it does
 not move them. `assume_crs` makes that assignment explicit and reports
@@ -37,7 +40,10 @@ polygon mask are applied:
 aoi <- terra::as.polygons(terra::ext(500000, 500020, 4400000, 4400020),
                           crs = terra::crs(h$depth))
 cropped <- classify_mesohabitat_raster(h$depth, h$velocity, aoi = aoi)
+plot_mesohabitat(cropped)
 ```
+
+![](hec-ras-example_files/figure-html/unnamed-chunk-2-1.png)
 
 For multiple dates, use unique matching names rather than relying on
 file order. Output can be written to a GeoTIFF and accompanied by a
