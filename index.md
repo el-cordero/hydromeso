@@ -105,34 +105,34 @@ hydraulics <- mesohabitat_example_rasters()
 classes <- classify_mesohabitat_raster(hydraulics$depth, hydraulics$velocity)
 classes
 #> class       : SpatRaster
-#> size        : 2, 4, 1  (nrow, ncol, nlyr)
-#> resolution  : 10, 10  (x, y)
-#> extent      : 500000, 500040, 4400000, 4400020  (xmin, xmax, ymin, ymax)
-#> coord. ref. : WGS 84 / UTM zone 15N (EPSG:32615)
+#> size        : 230, 445, 1  (nrow, ncol, nlyr)
+#> resolution  : 18, 18  (x, y)
+#> extent      : 1725550, 1733560, 312049.5, 316189.5  (xmin, xmax, ymin, ymax)
+#> coord. ref. : +proj=lcc +lat_0=38.3333333333333 +lon_0=-98 +lat_1=38.7166666666667 +lat_2=39.7833333333333 +x_0=400000 +y_0=0 +ellps=GRS80 +units=us-ft +no_defs
 #> source(s)   : memory
 #> categories  : mesohabitat
 #> name        :           mesohabitat
 #> min value   :          Shallow Pool
 #> max value   : Faster than Deep Pool
 summarize_mesohabitat(classes)
-#>      scenario class_id                 label cell_count  area_m2   hectares
-#> 1 mesohabitat        1          Shallow Pool          1 100.0801 0.01000801
-#> 2 mesohabitat        2           Medium Pool          1 100.0800 0.01000800
-#> 3 mesohabitat        3             Deep Pool          1 100.0800 0.01000800
-#> 4 mesohabitat        4           Slow Riffle          1 100.0801 0.01000801
-#> 5 mesohabitat        5           Fast Riffle          1 100.0800 0.01000800
-#> 6 mesohabitat        6               Raceway          1 100.0800 0.01000800
-#> 7 mesohabitat        7   Faster than Raceway          1 100.0800 0.01000800
-#> 8 mesohabitat        8 Faster than Deep Pool          1 100.0800 0.01000800
-#>   square_kilometres      acres percentage
-#> 1      0.0001000801 0.02473032       12.5
-#> 2      0.0001000800 0.02473032       12.5
-#> 3      0.0001000800 0.02473032       12.5
-#> 4      0.0001000801 0.02473032       12.5
-#> 5      0.0001000800 0.02473032       12.5
-#> 6      0.0001000800 0.02473032       12.5
-#> 7      0.0001000800 0.02473032       12.5
-#> 8      0.0001000800 0.02473032       12.5
+#>      scenario class_id                 label cell_count    area_m2   hectares
+#> 1 mesohabitat        1          Shallow Pool        470  14148.535  1.4148535
+#> 2 mesohabitat        2           Medium Pool        205   6171.170  0.6171170
+#> 3 mesohabitat        3             Deep Pool        130   3913.425  0.3913425
+#> 4 mesohabitat        4           Slow Riffle        823  24774.986  2.4774986
+#> 5 mesohabitat        5           Fast Riffle        115   3461.876  0.3461876
+#> 6 mesohabitat        6               Raceway       1036  31186.982  3.1186982
+#> 7 mesohabitat        7   Faster than Raceway       3951 118937.996 11.8937996
+#> 8 mesohabitat        8 Faster than Deep Pool      14604 439628.086 43.9628086
+#>   square_kilometres       acres percentage
+#> 1       0.014148535   3.4961791  2.2030562
+#> 2       0.006171170   1.5249293  0.9609076
+#> 3       0.003913425   0.9670284  0.6093560
+#> 4       0.024774986   6.1220325  3.8576918
+#> 5       0.003461876   0.8554481  0.5390457
+#> 6       0.031186982   7.7064710  4.8560981
+#> 7       0.118937996  29.3902190 18.5197332
+#> 8       0.439628086 108.6344659 68.4541114
 ```
 
 Custom schemes use the same engine:
@@ -164,11 +164,10 @@ classifies zero depth and zero velocity as Class 1.
 
 The default eight-class table is from Cordero and Harris (Preprint),
 *Semi-Supervised and Supervised Machine Learning Approaches to
-Predicting Fluvial Mesohabitats from Satellite Data*,
-[doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727). The
-broader framework is informed by Aadland (1993), *Stream Habitat Types:
-Their Fish Assemblages and Relationship to Flow*,
-[doi:10.1577/1548-8675(1993)013\<0790:SHTTFA\>2.3.CO;2](https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2).
+Predicting Fluvial Mesohabitats from Satellite Data*, DOI:
+`10.2139/ssrn.7100727`. The broader framework is informed by Aadland
+(1993), *Stream Habitat Types: Their Fish Assemblages and Relationship
+to Flow*, DOI: `10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2`.
 
 Source code and issue tracking are available at
 [github.com/el-cordero/hydromeso](https://github.com/el-cordero/hydromeso).
