@@ -49,6 +49,7 @@ write_mesohabitat <- function(x, filename, overwrite = FALSE, sidecar = TRUE,
   } else if (is.data.frame(x)) {
     utils::write.csv(x, path, row.names = FALSE, ...)
   } else stop("Unsupported object type for export.", call. = FALSE)
+  path <- normalizePath(path, mustWork = TRUE)
   if (isTRUE(sidecar)) .write_sidecar(path, scheme, overwrite)
   invisible(path)
 }
