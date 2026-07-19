@@ -103,10 +103,10 @@ scheme and classifies zero depth and zero velocity as Class 1.
 
 The default eight-class table is from Cordero and Harris (Preprint),
 *Semi-Supervised and Supervised Machine Learning Approaches to Predicting
-Fluvial Mesohabitats from Satellite Data*, [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727).
+Fluvial Mesohabitats from Satellite Data*, DOI: `10.2139/ssrn.7100727`.
 The broader framework is informed by Aadland (1993), *Stream Habitat Types:
 Their Fish Assemblages and Relationship to Flow*,
-[doi:10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2](https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2).
+DOI: `10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2`.
 
 Source code and issue tracking are available at
 [github.com/el-cordero/hydromeso](https://github.com/el-cordero/hydromeso).

@@ -3,10 +3,13 @@
 Tested with R 4.5.3 on macOS Tahoe 26.2 (aarch64):
 
 * `R CMD check`: 0 errors, 0 warnings, 0 notes.
-* `R CMD check --as-cran`: 0 errors, 0 warnings, 1 note.
+* `R CMD check --as-cran`: 0 errors, 0 warnings, 2 notes locally.
 
-The sole CRAN incoming note is the expected “New submission” note. No
-avoidable notes remain.
+The CRAN incoming note is the expected “New submission” note. The other local
+note reports that the macOS-provided HTML Tidy executable is not recent enough
+to validate the generated HTML manual. The HTML manual is generated
+successfully, and this tooling note is not caused by package content. No
+avoidable package notes remain.
 
 ## Notes
 
