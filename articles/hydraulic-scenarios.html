@@ -73,40 +73,40 @@ requested.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scenarios</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_series.html">classify_mesohabitat_series</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">velocity</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/summarize_mesohabitat.html">summarize_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##    scenario class_id                 label cell_count  area_m2   hectares</span></span>
-<span><span class="co">## 1       low        1          Shallow Pool          1 100.0801 0.01000801</span></span>
-<span><span class="co">## 2       low        2           Medium Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 3       low        3             Deep Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 4       low        4           Slow Riffle          1 100.0801 0.01000801</span></span>
-<span><span class="co">## 5       low        5           Fast Riffle          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 6       low        6               Raceway          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 7       low        7   Faster than Raceway          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 8       low        8 Faster than Deep Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 9      high        1          Shallow Pool          1 100.0801 0.01000801</span></span>
-<span><span class="co">## 10     high        2           Medium Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 11     high        3             Deep Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 12     high        4           Slow Riffle          1 100.0801 0.01000801</span></span>
-<span><span class="co">## 13     high        5           Fast Riffle          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 14     high        6               Raceway          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 15     high        7   Faster than Raceway          1 100.0800 0.01000800</span></span>
-<span><span class="co">## 16     high        8 Faster than Deep Pool          1 100.0800 0.01000800</span></span>
-<span><span class="co">##    square_kilometres      acres percentage</span></span>
-<span><span class="co">## 1       0.0001000801 0.02473032       12.5</span></span>
-<span><span class="co">## 2       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 3       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 4       0.0001000801 0.02473032       12.5</span></span>
-<span><span class="co">## 5       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 6       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 7       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 8       0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 9       0.0001000801 0.02473032       12.5</span></span>
-<span><span class="co">## 10      0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 11      0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 12      0.0001000801 0.02473032       12.5</span></span>
-<span><span class="co">## 13      0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 14      0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 15      0.0001000800 0.02473032       12.5</span></span>
-<span><span class="co">## 16      0.0001000800 0.02473032       12.5</span></span></code></pre>
+<pre><code><span><span class="co">##    scenario class_id                 label cell_count    area_m2   hectares</span></span>
+<span><span class="co">## 1       low        1          Shallow Pool        470  14148.535  1.4148535</span></span>
+<span><span class="co">## 2       low        2           Medium Pool        205   6171.170  0.6171170</span></span>
+<span><span class="co">## 3       low        3             Deep Pool        130   3913.425  0.3913425</span></span>
+<span><span class="co">## 4       low        4           Slow Riffle        823  24774.986  2.4774986</span></span>
+<span><span class="co">## 5       low        5           Fast Riffle        115   3461.876  0.3461876</span></span>
+<span><span class="co">## 6       low        6               Raceway       1036  31186.982  3.1186982</span></span>
+<span><span class="co">## 7       low        7   Faster than Raceway       3951 118937.996 11.8937996</span></span>
+<span><span class="co">## 8       low        8 Faster than Deep Pool      14604 439628.086 43.9628086</span></span>
+<span><span class="co">## 9      high        1          Shallow Pool        363  10927.485  1.0927485</span></span>
+<span><span class="co">## 10     high        2           Medium Pool        164   4936.936  0.4936936</span></span>
+<span><span class="co">## 11     high        3             Deep Pool        119   3582.289  0.3582289</span></span>
+<span><span class="co">## 12     high        4           Slow Riffle        617  18573.714  1.8573714</span></span>
+<span><span class="co">## 13     high        5           Fast Riffle        128   3853.218  0.3853218</span></span>
+<span><span class="co">## 14     high        6               Raceway        475  14299.051  1.4299051</span></span>
+<span><span class="co">## 15     high        7   Faster than Raceway       1884  56714.550  5.6714550</span></span>
+<span><span class="co">## 16     high        8 Faster than Deep Pool      17584 529335.813 52.9335813</span></span>
+<span><span class="co">##    square_kilometres       acres percentage</span></span>
+<span><span class="co">## 1        0.014148535   3.4961791  2.2030562</span></span>
+<span><span class="co">## 2        0.006171170   1.5249293  0.9609076</span></span>
+<span><span class="co">## 3        0.003913425   0.9670284  0.6093560</span></span>
+<span><span class="co">## 4        0.024774986   6.1220325  3.8576918</span></span>
+<span><span class="co">## 5        0.003461876   0.8554481  0.5390457</span></span>
+<span><span class="co">## 6        0.031186982   7.7064710  4.8560981</span></span>
+<span><span class="co">## 7        0.118937996  29.3902190 18.5197332</span></span>
+<span><span class="co">## 8        0.439628086 108.6344659 68.4541114</span></span>
+<span><span class="co">## 9        0.010927485   2.7002405  1.7015094</span></span>
+<span><span class="co">## 10       0.004936936   1.2199435  0.7687261</span></span>
+<span><span class="co">## 11       0.003582289   0.8852029  0.5577951</span></span>
+<span><span class="co">## 12       0.018573714   4.5896647  2.8920970</span></span>
+<span><span class="co">## 13       0.003853218   0.9521509  0.5999812</span></span>
+<span><span class="co">## 14       0.014299051   3.5333724  2.2264929</span></span>
+<span><span class="co">## 15       0.056714550  14.0144706  8.8309739</span></span>
+<span><span class="co">## 16       0.529335813 130.8017279 82.4224244</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">)</span></span></code></pre></div>
 <p><img src="hydraulic-scenarios_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="700"></p>
@@ -127,10 +127,10 @@ identifier-only convention.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/modal_mesohabitat.html">modal_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span>, ties <span class="op">=</span> <span class="st">"NA"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## class       : SpatRaster</span></span>
-<span><span class="co">## size        : 2, 4, 1  (nrow, ncol, nlyr)</span></span>
-<span><span class="co">## resolution  : 10, 10  (x, y)</span></span>
-<span><span class="co">## extent      : 500000, 500040, 4400000, 4400020  (xmin, xmax, ymin, ymax)</span></span>
-<span><span class="co">## coord. ref. : WGS 84 / UTM zone 15N (EPSG:32615)</span></span>
+<span><span class="co">## size        : 230, 445, 1  (nrow, ncol, nlyr)</span></span>
+<span><span class="co">## resolution  : 18, 18  (x, y)</span></span>
+<span><span class="co">## extent      : 1725550, 1733560, 312049.5, 316189.5  (xmin, xmax, ymin, ymax)</span></span>
+<span><span class="co">## coord. ref. : +proj=lcc +lat_0=38.3333333333333 +lon_0=-98 +lat_1=38.7166666666667 +lat_2=39.7833333333333 +x_0=400000 +y_0=0 +ellps=GRS80 +units=us-ft +no_defs</span></span>
 <span><span class="co">## source(s)   : memory</span></span>
 <span><span class="co">## categories  : mesohabitat</span></span>
 <span><span class="co">## name        :     modal_mesohabitat</span></span>
@@ -139,43 +139,57 @@ identifier-only convention.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/compare_mesohabitat.html">compare_mesohabitat</a></span><span class="op">(</span><span class="va">scenarios</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">scenarios</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## $transitions</span></span>
-<span><span class="co">##   from_class to_class cell_count  area_m2</span></span>
-<span><span class="co">## 1          1        1          1 100.0801</span></span>
-<span><span class="co">## 2          2        2          1 100.0800</span></span>
-<span><span class="co">## 3          3        3          1 100.0800</span></span>
-<span><span class="co">## 4          4        4          1 100.0801</span></span>
-<span><span class="co">## 5          5        5          1 100.0800</span></span>
-<span><span class="co">## 6          6        6          1 100.0800</span></span>
-<span><span class="co">## 7          7        7          1 100.0800</span></span>
-<span><span class="co">## 8          8        8          1 100.0800</span></span>
+<span><span class="co">##    from_class to_class cell_count     area_m2</span></span>
+<span><span class="co">## 1           1        1        363  10927.4855</span></span>
+<span><span class="co">## 2           1        2         41   1234.2340</span></span>
+<span><span class="co">## 3           1        4         60   1806.1959</span></span>
+<span><span class="co">## 4           1        6          6    180.6196</span></span>
+<span><span class="co">## 5           2        2        123   3702.7020</span></span>
+<span><span class="co">## 6           2        3         32    963.3046</span></span>
+<span><span class="co">## 7           2        6         33    993.4078</span></span>
+<span><span class="co">## 8           2        8         17    511.7556</span></span>
+<span><span class="co">## 9           3        3         87   2618.9844</span></span>
+<span><span class="co">## 10          3        8         43   1294.4406</span></span>
+<span><span class="co">## 11          4        4        557  16767.5182</span></span>
+<span><span class="co">## 12          4        5         60   1806.1959</span></span>
+<span><span class="co">## 13          4        6        114   3431.7721</span></span>
+<span><span class="co">## 14          4        7         92   2769.5003</span></span>
+<span><span class="co">## 15          5        5         68   2047.0220</span></span>
+<span><span class="co">## 16          5        7         47   1414.8535</span></span>
+<span><span class="co">## 17          6        6        322   9693.2511</span></span>
+<span><span class="co">## 18          6        7        260   7826.8487</span></span>
+<span><span class="co">## 19          6        8        454  13666.8818</span></span>
+<span><span class="co">## 20          7        7       1485  44703.3478</span></span>
+<span><span class="co">## 21          7        8       2466  74234.6486</span></span>
+<span><span class="co">## 22          8        8      14604 439628.0860</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $gains</span></span>
-<span><span class="co">##   class_id area_m2</span></span>
-<span><span class="co">## 1        1       0</span></span>
-<span><span class="co">## 2        2       0</span></span>
-<span><span class="co">## 3        3       0</span></span>
-<span><span class="co">## 4        4       0</span></span>
-<span><span class="co">## 5        5       0</span></span>
-<span><span class="co">## 6        6       0</span></span>
-<span><span class="co">## 7        7       0</span></span>
-<span><span class="co">## 8        8       0</span></span>
+<span><span class="co">##   class_id    area_m2</span></span>
+<span><span class="co">## 1        1     0.0000</span></span>
+<span><span class="co">## 2        2  1234.2340</span></span>
+<span><span class="co">## 3        3   963.3046</span></span>
+<span><span class="co">## 4        4  1806.1959</span></span>
+<span><span class="co">## 5        5  1806.1959</span></span>
+<span><span class="co">## 6        6  4605.7995</span></span>
+<span><span class="co">## 7        7 12011.2025</span></span>
+<span><span class="co">## 8        8 89707.7265</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $losses</span></span>
-<span><span class="co">##   class_id area_m2</span></span>
-<span><span class="co">## 1        1       0</span></span>
-<span><span class="co">## 2        2       0</span></span>
-<span><span class="co">## 3        3       0</span></span>
-<span><span class="co">## 4        4       0</span></span>
-<span><span class="co">## 5        5       0</span></span>
-<span><span class="co">## 6        6       0</span></span>
-<span><span class="co">## 7        7       0</span></span>
-<span><span class="co">## 8        8       0</span></span>
+<span><span class="co">##   class_id   area_m2</span></span>
+<span><span class="co">## 1        1  3221.049</span></span>
+<span><span class="co">## 2        2  2468.468</span></span>
+<span><span class="co">## 3        3  1294.441</span></span>
+<span><span class="co">## 4        4  8007.468</span></span>
+<span><span class="co">## 5        5  1414.853</span></span>
+<span><span class="co">## 6        6 21493.730</span></span>
+<span><span class="co">## 7        7 74234.649</span></span>
+<span><span class="co">## 8        8     0.000</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $unchanged_area_m2</span></span>
-<span><span class="co">## [1] 800.6404</span></span>
+<span><span class="co">## [1] 530088.4</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $percentage_changed</span></span>
-<span><span class="co">## [1] 0</span></span></code></pre>
+<span><span class="co">## [1] 17.46039</span></span></code></pre>
   </main>
 </div>
 

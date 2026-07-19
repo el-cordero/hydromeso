@@ -66,7 +66,7 @@
 - [`mesohabitat_example_vector()`](https://el-cordero.github.io/hydromeso/reference/mesohabitat_example_vector.md)
   : Create a synthetic example spatial vector
 - [`mesohabitat_example_rasters()`](https://el-cordero.github.io/hydromeso/reference/mesohabitat_example_rasters.md)
-  : Create synthetic example hydraulic rasters
+  : Load example HEC-RAS hydraulic rasters
 
 ## Package
 

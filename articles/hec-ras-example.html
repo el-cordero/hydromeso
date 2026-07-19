@@ -63,43 +63,121 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://el-cordero.github.io/hydromeso/">hydromeso</a></span><span class="op">)</span></span></code></pre></div>
 <p>HEC-RAS workflows commonly begin with paired depth and velocity
-GeoTIFFs. Inspect their units, dry-cell encoding, CRS, extent,
-resolution, origin, and dimensions before classification. The following
-self-contained example stands in for file-backed inputs:</p>
+GeoTIFFs. The package includes a compact pair derived from the 31 May
+2022 HEC-RAS model output used by Cordero and Harris (Preprint). These
+are real hydraulic surfaces from the confluence of the Big Blue and
+Kansas Rivers near Manhattan, Kansas, rather than synthetic cells.</p>
+<p>The source rasters were cropped to the detailed manuscript-map
+extent, aggregated from 3-foot to 18-foot cells, and converted from feet
+and feet per second to metres and metres per second. The raster
+coordinates remain in the source project’s documented NAD 1983 (CORS96)
+StatePlane Kansas North system.</p>
+<div class="section level2">
+<h2 id="inspect-the-hydraulic-inputs">Inspect the hydraulic inputs<a class="anchor" aria-label="anchor" href="#inspect-the-hydraulic-inputs"></a>
+</h2>
+<p>The helper can return either installed GeoTIFF paths or loaded
+rasters:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">paths</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mesohabitat_example_rasters.html">mesohabitat_example_rasters</a></span><span class="op">(</span>paths <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">paths</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "big_blue_kansas_depth_m.tif"      "big_blue_kansas_velocity_m_s.tif"</span></span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mesohabitat_example_rasters.html">mesohabitat_example_rasters</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/compareGeom.html" class="external-link">compareGeom</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">classes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_raster.html">classify_mesohabitat_raster</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">classes</span><span class="op">)</span></span></code></pre></div>
-<p><img src="hec-ras-example_files/figure-html/unnamed-chunk-1-1.png" class="r-plt" alt="" width="700"></p>
-<p>Assigning a known missing CRS describes existing coordinates; it does
-not move them. <code>assume_crs</code> makes that assignment explicit
-and reports it. Projecting coordinates is different. When geometry
-differs, <code>align = "velocity_to_depth"</code> uses bilinear
-interpolation to project or resample continuous velocity directly to the
-depth template.</p>
-<p>An AOI can be a <code>SpatVector</code> or supported path. By default
-both crop and polygon mask are applied:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">aoi</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html" class="external-link">as.polygons</a></span><span class="op">(</span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/ext.html" class="external-link">ext</a></span><span class="op">(</span><span class="fl">500000</span>, <span class="fl">500020</span>, <span class="fl">4400000</span>, <span class="fl">4400020</span><span class="op">)</span>,</span>
-<span>                          crs <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/crs.html" class="external-link">crs</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">cropped</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_raster.html">classify_mesohabitat_raster</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span>, aoi <span class="op">=</span> <span class="va">aoi</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span><span class="va">cropped</span><span class="op">)</span></span></code></pre></div>
-<p><img src="hec-ras-example_files/figure-html/unnamed-chunk-2-1.png" class="r-plt" alt="" width="700"></p>
-<p>For multiple dates, use unique matching names rather than relying on
-file order. Output can be written to a GeoTIFF and accompanied by a
-class-table CSV:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_series.html">classify_mesohabitat_series</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>example <span class="op">=</span> <span class="va">h</span><span class="op">$</span><span class="va">depth</span><span class="op">)</span>,</span>
-<span>                                      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>example <span class="op">=</span> <span class="va">h</span><span class="op">$</span><span class="va">velocity</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">old_par</span> <span class="op">&lt;-</span> <span class="fu">graphics</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, col <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">40</span>, <span class="st">"Blues 3"</span><span class="op">)</span>,</span>
+<span>            main <span class="op">=</span> <span class="st">"Depth (m)"</span>, axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/plot.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">velocity</span>, col <span class="op">=</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fl">40</span>, <span class="st">"YlOrRd"</span><span class="op">)</span>,</span>
+<span>            main <span class="op">=</span> <span class="st">"Velocity (m/s)"</span>, axes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="hec-ras-example_files/figure-html/hecras-inputs-1.png" class="r-plt" alt="Depth and velocity surfaces derived from the 31 May 2022 HEC-RAS output at the Big Blue-Kansas Rivers confluence." width="960"><p class="caption">
+Depth and velocity surfaces derived from the 31 May 2022 HEC-RAS output
+at the Big Blue-Kansas Rivers confluence.
+</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">graphics</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par</a></span><span class="op">(</span><span class="va">old_par</span><span class="op">)</span></span></code></pre></div>
+<p>Inspect units, dry-cell encoding, CRS, extent, resolution, origin,
+and dimensions before classifying any HEC-RAS export. The example is
+already in the metric hydraulic units required by the default
+scheme.</p>
+</div>
+<div class="section level2">
+<h2 id="classify-the-river">Classify the river<a class="anchor" aria-label="anchor" href="#classify-the-river"></a>
+</h2>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">classes</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_raster.html">classify_mesohabitat_raster</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span><span class="op">)</span></span>
+<span><span class="va">class_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mesohabitat_palette.html">mesohabitat_palette</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span></span>
+<span>  <span class="va">classes</span>,</span>
+<span>  main <span class="op">=</span> <span class="st">"Big Blue-Kansas Rivers mesohabitats — 31 May 2022"</span>,</span>
+<span>  axes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  palette <span class="op">=</span> <span class="va">class_colors</span>,</span>
+<span>  plg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"bottom"</span>, ncol <span class="op">=</span> <span class="fl">4</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="hec-ras-example_files/figure-html/hecras-classification-1.png" class="r-plt" alt="Eight-class hydraulic mesohabitats derived from the real HEC-RAS sample." width="960"><p class="caption">
+Eight-class hydraulic mesohabitats derived from the real HEC-RAS sample.
+</p>
+</div>
+<p>The white background is outside the HEC-RAS wetted surface. Class IDs
+describe depth-velocity combinations; they are not habitat-quality
+scores.</p>
+</div>
+<div class="section level2">
+<h2 id="work-with-an-area-of-interest">Work with an area of interest<a class="anchor" aria-label="anchor" href="#work-with-an-area-of-interest"></a>
+</h2>
+<p>An AOI can be a <code>SpatVector</code> or a supported vector path.
+By default both crop and polygon mask are applied. This reproducible
+rectangle selects the central part of the included river sample:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">e</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/ext.html" class="external-link">ext</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span><span class="op">)</span></span>
+<span><span class="va">dx</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">xmax</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">xmin</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span></span>
+<span><span class="va">dy</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">ymax</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">ymin</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span></span>
+<span><span class="va">aoi</span> <span class="op">&lt;-</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/as.polygons.html" class="external-link">as.polygons</a></span><span class="op">(</span></span>
+<span>  <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/ext.html" class="external-link">ext</a></span><span class="op">(</span></span>
+<span>    <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">xmin</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.18</span> <span class="op">*</span> <span class="va">dx</span>, <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">xmax</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.18</span> <span class="op">*</span> <span class="va">dx</span>,</span>
+<span>    <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">ymin</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">+</span> <span class="fl">0.12</span> <span class="op">*</span> <span class="va">dy</span>, <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/xmin.html" class="external-link">ymax</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">-</span> <span class="fl">0.12</span> <span class="op">*</span> <span class="va">dy</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  crs <span class="op">=</span> <span class="fu">terra</span><span class="fu">::</span><span class="fu"><a href="https://rspatial.github.io/terra/reference/crs.html" class="external-link">crs</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">cropped</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_raster.html">classify_mesohabitat_raster</a></span><span class="op">(</span><span class="va">h</span><span class="op">$</span><span class="va">depth</span>, <span class="va">h</span><span class="op">$</span><span class="va">velocity</span>, aoi <span class="op">=</span> <span class="va">aoi</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_mesohabitat.html">plot_mesohabitat</a></span><span class="op">(</span></span>
+<span>  <span class="va">cropped</span>, axes <span class="op">=</span> <span class="cn">FALSE</span>, palette <span class="op">=</span> <span class="va">class_colors</span>,</span>
+<span>  plg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"bottom"</span>, ncol <span class="op">=</span> <span class="fl">4</span>, cex <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="hec-ras-example_files/figure-html/hecras-aoi-1.png" class="r-plt" alt="Mesohabitat output cropped to a central area of interest." width="960"><p class="caption">
+Mesohabitat output cropped to a central area of interest.
+</p>
+</div>
+<p>When input geometry differs, <code>align = "velocity_to_depth"</code>
+uses bilinear interpolation to project or resample continuous velocity
+to the depth template. Assigning a known missing CRS with
+<code>assume_crs</code> describes existing coordinates; it does not move
+them.</p>
+</div>
+<div class="section level2">
+<h2 id="process-and-export-scenarios">Process and export scenarios<a class="anchor" aria-label="anchor" href="#process-and-export-scenarios"></a>
+</h2>
+<p>For multiple dates, use unique matching names rather than relying on
+file order. Output can be written to a GeoTIFF with an accompanying
+class-table CSV:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">series</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/classify_mesohabitat_series.html">classify_mesohabitat_series</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>`2022-05-31` <span class="op">=</span> <span class="va">h</span><span class="op">$</span><span class="va">depth</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>`2022-05-31` <span class="op">=</span> <span class="va">h</span><span class="op">$</span><span class="va">velocity</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"hecras_mesohabitat.tif"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/write_mesohabitat.html">write_mesohabitat</a></span><span class="op">(</span><span class="va">series</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">out</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/write_mesohabitat.html">write_mesohabitat</a></span><span class="op">(</span><span class="va">series</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="va">out</span>, sidecar <span class="op">=</span> <span class="cn">TRUE</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Determine how dry HEC-RAS cells are represented before choosing
 <code>dry_threshold</code>; the package does not silently redefine zero
 depth.</p>
-  </main>
+</div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
