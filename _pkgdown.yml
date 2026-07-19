@@ -1,0 +1,52 @@
+url: https://el-cordero.github.io/hydromeso/
+
+development:
+  mode: unreleased
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    primary: "#245B6B"
+    link-color: "#176B87"
+
+home:
+  title: "hydromeso: fluvial mesohabitat classification in R"
+  description: "Classify depth and velocity into documented hydraulic mesohabitat categories."
+
+navbar:
+  structure:
+    left: [home, getstarted, reference, articles, news]
+    right: [search, github, lightswitch]
+
+articles:
+  - title: Workflows
+    contents:
+      - getting-started
+      - input-formats
+      - custom-classifications
+      - hydraulic-scenarios
+      - hec-ras-example
+  - title: Scientific background
+    contents:
+      - scientific-basis
+
+reference:
+  - title: Classification schemes
+    contents: [meso_scheme, meso_scheme_default, meso_scheme_rules, validate_meso_scheme, convert_hydraulic_units]
+  - title: Classification
+    contents: [classify_mesohabitat, classify_mesohabitat_values, classify_mesohabitat_table]
+  - title: Spatial data
+    contents: [classify_mesohabitat_vector, classify_mesohabitat_raster]
+  - title: Scenario analysis
+    contents: [classify_mesohabitat_series, mesohabitat_from_median_hydraulics, modal_mesohabitat]
+  - title: Summaries and comparison
+    contents: [summarize_mesohabitat, compare_mesohabitat]
+  - title: Plotting
+    contents: [mesohabitat_palette, plot_meso_scheme, plot_mesohabitat]
+  - title: Export
+    contents: [write_mesohabitat]
+  - title: Example data
+    contents: [hydromeso_example, mesohabitat_example_vector, mesohabitat_example_rasters]
+  - title: Package
+    contents: [hydromeso-package]

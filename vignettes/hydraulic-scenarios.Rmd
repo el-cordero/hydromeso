@@ -1,0 +1,43 @@
+---
+title: "Hydraulic scenarios"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Hydraulic scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(hydromeso)
+h <- mesohabitat_example_rasters()
+d2 <- h$depth * 1.25
+v2 <- h$velocity * 1.15
+depth <- list(low = h$depth, high = d2)
+velocity <- list(low = h$velocity, high = v2)
+```
+
+Unique names pair dates or discharges safely. Unmatched or duplicated names are
+rejected. Positional pairing is available only when explicitly requested.
+
+```{r}
+scenarios <- classify_mesohabitat_series(depth, velocity)
+summarize_mesohabitat(scenarios)
+```
+
+The following operation takes median depth and median velocity first and then
+classifies those two surfaces:
+
+```{r}
+median_result <- mesohabitat_from_median_hydraulics(depth, velocity)
+names(median_result)
+```
+
+This is mesohabitat derived from median hydraulics, not “median mesohabitat.”
+The modal nominal class is a different operation. Ties can return `NA` or the
+lowest class identifier as a deterministic identifier-only convention.
+
+```{r}
+modal_mesohabitat(scenarios, ties = "NA")
+compare_mesohabitat(scenarios[[1]], scenarios[[2]])
+```
+

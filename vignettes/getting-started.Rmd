@@ -1,0 +1,48 @@
+---
+title: "Getting started with hydromeso"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with hydromeso}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(hydromeso)
+```
+
+`hydromeso` classifies depth and velocity into nominal hydraulic mesohabitats.
+Install a local source package with `install.packages(path, repos = NULL,
+type = "source")`.
+
+## Exact default table
+
+```{r}
+meso_scheme_rules(meso_scheme_default())
+```
+
+All lower bounds are inclusive and all upper bounds are exclusive. Exact depths
+0.61 and 1.37 enter the medium and deep ranges; exact velocities 0.30 and 0.61
+enter the moderate and high ranges.
+
+## Values and tables
+
+```{r}
+classify_mesohabitat_values(c(0, 0.61, 1.37), c(0, 0.30, 0.61))
+tab <- classify_mesohabitat_table(hydromeso_example, "depth", "velocity")
+summarize_mesohabitat(tab)
+```
+
+## Rasters and export
+
+```{r}
+h <- mesohabitat_example_rasters()
+r <- classify_mesohabitat_raster(h$depth, h$velocity)
+summarize_mesohabitat(r)
+out <- file.path(tempdir(), "mesohabitat.tif")
+write_mesohabitat(r, out, sidecar = TRUE, overwrite = TRUE)
+```
+
+The classes describe hydraulic conditions only. They are not biological
+habitat-suitability scores, and the integer IDs are nominal.
+

@@ -1,0 +1,9 @@
+^hydromeso\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^README\.html$
+^data-raw$
+^cran-comments\.md$
+^pkgdown$
+^_pkgdown\.yml$
+^\.github$

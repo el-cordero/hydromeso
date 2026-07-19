@@ -1,0 +1,112 @@
+---
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE, comment = "#>", fig.path = "man/figures/README-",
+  fig.alt = "Depth-velocity diagram of the eight default mesohabitat classes"
+)
+library(hydromeso)
+```
+
+# hydromeso
+
+<!-- badges: start -->
+Development status: version 0.1.0; not yet on CRAN.
+<!-- badges: end -->
+
+`hydromeso` classifies water depth and velocity into nominal fluvial hydraulic
+mesohabitat categories. It supports numeric values, ordinary tables,
+`terra::SpatVector` features, rasters, multiple hydraulic scenarios, and
+validated custom rectangular schemes. Its only non-base runtime dependency is
+`terra`.
+
+## Installation
+
+```r
+# From a local source checkout:
+install.packages("hydromeso", repos = NULL, type = "source")
+```
+
+## Default classification
+
+The authoritative default uses metres and metres per second. Lower bounds are
+inclusive and upper bounds are exclusive.
+
+|Class|Mesohabitat|Depth (m)|Velocity (m/s)|
+|---:|:---|:---|:---|
+|1|Shallow Pool|< 0.61|< 0.30|
+|2|Medium Pool|>= 0.61 and < 1.37|< 0.30|
+|3|Deep Pool|>= 1.37|< 0.30|
+|4|Slow Riffle|< 0.61|>= 0.30 and < 0.61|
+|5|Fast Riffle|< 0.61|>= 0.61|
+|6|Raceway|>= 0.61 and < 1.37|>= 0.30 and < 0.61|
+|7|Faster than Raceway|>= 0.61 and < 1.37|>= 0.61|
+|8|Faster than Deep Pool|>= 1.37|>= 0.30|
+
+```{r scheme-plot, fig.width=7, fig.height=5}
+plot_meso_scheme()
+```
+
+## Quick examples
+
+```{r values}
+classify_mesohabitat_values(
+  depth = c(0, 0.61, 1.37, NA),
+  velocity = c(0, 0.30, 0.61, 0.2)
+)
+```
+
+```{r table}
+classified <- classify_mesohabitat_table(
+  hydromeso_example, "depth", "velocity"
+)
+head(classified)
+summarize_mesohabitat(classified)
+```
+
+```{r vector}
+points <- mesohabitat_example_vector()
+classified_points <- classify_mesohabitat_vector(points, "depth", "velocity")
+classified_points
+```
+
+```{r raster}
+hydraulics <- mesohabitat_example_rasters()
+classes <- classify_mesohabitat_raster(hydraulics$depth, hydraulics$velocity)
+classes
+summarize_mesohabitat(classes)
+```
+
+Custom schemes use the same engine:
+
+```{r custom}
+rules <- data.frame(
+  class_id = c(1L, 2L), label = c("Slow", "Fast"),
+  depth_min = c(0, 0), depth_max = c(Inf, Inf),
+  velocity_min = c(0, 0.5), velocity_max = c(0.5, Inf)
+)
+custom <- meso_scheme(rules, name = "Two velocity classes")
+classify_mesohabitat_values(c(0.2, 1), c(0.2, 0.8), custom)
+```
+
+## Interpretation and citation
+
+The output is a depth-velocity hydraulic classification, not proof of habitat
+quality or fish occupancy. Interpretation depends on species and life stage,
+stream type, substrate, cover, connectivity, water quality, temperature, flow
+regime, hydraulic-model resolution, and local validation. Class IDs are labels,
+not ordinal scores. Users must decide how dry cells are represented in their
+own HEC-RAS or other model outputs; `dry_threshold = NULL` preserves the exact
+scheme and classifies zero depth and zero velocity as Class 1.
+
+The default eight-class table is from Cordero and Harris (2026),
+*Semi-Supervised and Supervised Machine Learning Approaches to Predicting
+Fluvial Mesohabitats from Satellite Data*, [doi:10.2139/ssrn.7100727](https://doi.org/10.2139/ssrn.7100727).
+The broader framework is informed by Aadland (1993), *Stream Habitat Types:
+Their Fish Assemblages and Relationship to Flow*,
+[doi:10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2](https://doi.org/10.1577/1548-8675%281993%29013%3C0790%3ASHTTFA%3E2.3.CO%3B2).
+
+Source code and issue tracking are available at
+[github.com/el-cordero/hydromeso](https://github.com/el-cordero/hydromeso).

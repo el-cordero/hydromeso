@@ -1,0 +1,34 @@
+citHeader("To cite hydromeso in publications, use:")
+
+bibentry(
+  bibtype = "Manual",
+  title = "hydromeso: Classify Fluvial Mesohabitats from Depth and Velocity",
+  author = person("Elvin", "Cordero"),
+  year = "2026",
+  note = "R package version 0.1.0"
+)
+
+citHeader("The default eight-class thresholds are from:")
+
+bibentry(
+  bibtype = "Unpublished",
+  title = "Semi-Supervised and Supervised Machine Learning Approaches to Predicting Fluvial Mesohabitats from Satellite Data",
+  author = c(person("Elvin", "Cordero"), person("Aubrey", "Harris")),
+  year = "2026",
+  note = "SSRN preprint, posted July 11, 2026",
+  doi = "10.2139/ssrn.7100727"
+)
+
+citHeader("For the broader depth-velocity habitat framework, cite:")
+
+bibentry(
+  bibtype = "Article",
+  title = "Stream Habitat Types: Their Fish Assemblages and Relationship to Flow",
+  author = person("Luther P.", "Aadland"),
+  journal = "North American Journal of Fisheries Management",
+  year = "1993",
+  volume = "13",
+  number = "4",
+  pages = "790--806",
+  doi = "10.1577/1548-8675(1993)013<0790:SHTTFA>2.3.CO;2"
+)

@@ -1,0 +1,40 @@
+---
+title: "Input formats and coordinate reference systems"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Input formats and coordinate reference systems}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup}
+library(hydromeso)
+```
+
+Data frames and matrices use named or positional field selection. CSV files are
+read with base R. Existing columns and row order are retained.
+
+```{r}
+classify_mesohabitat_table(hydromeso_example, 3, 4)
+```
+
+`SpatVector` objects and vector paths supported by `terra::vect()` retain their
+geometry, CRS, feature order, and attributes. This applies to points, lines,
+and polygons. GeoPackage is preferable for examples; Shapefile export warns and
+uses short class-field names.
+
+```{r}
+v <- mesohabitat_example_vector()
+classify_mesohabitat_vector(v, "depth", "velocity")
+```
+
+Rasters can be separate objects/paths or selected layers in one multilayer
+raster. Geometry mismatches fail by default. With
+`align = "velocity_to_depth"`, velocity is projected or resampled directly to
+the depth template with bilinear interpolation. Missing CRS values are never
+silently assigned. `assume_crs` assigns a declared CRS without transforming
+coordinates and reports that distinction.
+
+An AOI is projected to the raster CRS if necessary. `mask_aoi = TRUE` performs
+both a crop and polygon mask; `FALSE` performs only a rectangular crop.
+
