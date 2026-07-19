@@ -1,0 +1,63 @@
+# Custom mesohabitat classifications
+
+``` r
+
+library(hydromeso)
+```
+
+Custom schemes are validated rectangular regions. Required columns are
+`class_id`, `label`, `depth_min`, `depth_max`, `velocity_min`, and
+`velocity_max`.
+
+``` r
+
+rules <- data.frame(
+  class_id = c(1L, 2L), label = c("Slow", "Fast"),
+  depth_min = c(0, 0), depth_max = c(Inf, Inf),
+  velocity_min = c(0, 0.5), velocity_max = c(0.5, Inf)
+)
+custom <- meso_scheme(rules, name = "Two velocity classes")
+validate_meso_scheme(custom)
+plot_meso_scheme(custom)
+```
+
+![](custom-classifications_files/figure-html/unnamed-chunk-1-1.png)
+
+Overlaps are always rejected. Gaps are rejected unless
+`allow_gaps = TRUE`; observations in an allowed gap return `NA`.
+Validation evaluates exact breakpoints and representatives of every
+interval, not a random sample.
+
+``` r
+
+overlap <- rules
+overlap$velocity_min[2] <- 0.4
+meso_scheme(overlap)
+```
+
+    ## Error:
+    ## ! Overlapping classes 1 ('Slow') and 2 ('Fast') near depth 0 and velocity 0.4.
+
+``` r
+
+gap <- rules
+gap$velocity_max[1] <- 0.4
+gap$velocity_min[2] <- 0.6
+meso_scheme(gap)
+```
+
+    ## Error:
+    ## ! Uncovered depth-velocity region near depth 0 and velocity 0.4. Set `allow_gaps = TRUE` only when gaps are intentional.
+
+``` r
+
+gap_scheme <- meso_scheme(gap, allow_gaps = TRUE)
+classify_mesohabitat_values(1, 0.5, gap_scheme)
+```
+
+    ##   depth velocity mesohabitat_class mesohabitat
+    ## 1     1      0.5                NA        <NA>
+
+The custom scheme can be supplied to every table, vector, raster, and
+scenario classifier. Users are responsible for scientifically justifying
+and reporting custom thresholds and units.

@@ -1,0 +1,14 @@
+pandoc: '3.8'
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  custom-classifications: custom-classifications.html
+  getting-started: getting-started.html
+  hec-ras-example: hec-ras-example.html
+  hydraulic-scenarios: hydraulic-scenarios.html
+  input-formats: input-formats.html
+  scientific-basis: scientific-basis.html
+last_built: 2026-07-19T16:57Z
+urls:
+  reference: https://el-cordero.github.io/hydromeso/reference
+  article: https://el-cordero.github.io/hydromeso/articles
