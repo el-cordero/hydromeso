@@ -13,6 +13,9 @@ plot_mesohabitat(
   label_col = "mesohabitat",
   scheme = .scheme_from_object(x),
   palette = mesohabitat_palette(scheme),
+  legend = TRUE,
+  legend_ncol = 4,
+  legend_cex = 0.75,
   ...
 )
 ```
@@ -38,6 +41,18 @@ plot_mesohabitat(
 - palette:
 
   Named colors.
+
+- legend:
+
+  Show one shared legend below the plot or plot panels.
+
+- legend_ncol:
+
+  Number of columns in the shared legend.
+
+- legend_cex:
+
+  Legend text size multiplier.
 
 - ...:
 

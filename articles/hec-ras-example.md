@@ -72,8 +72,7 @@ plot_mesohabitat(
   classes,
   main = "Big Blue-Kansas Rivers mesohabitats — 31 May 2022",
   axes = FALSE,
-  palette = class_colors,
-  plg = list(x = "bottom", ncol = 4, cex = 0.75)
+  palette = class_colors
 )
 ```
 
@@ -106,8 +105,7 @@ aoi <- terra::as.polygons(
 )
 cropped <- classify_mesohabitat_raster(h$depth, h$velocity, aoi = aoi)
 plot_mesohabitat(
-  cropped, axes = FALSE, palette = class_colors,
-  plg = list(x = "bottom", ncol = 4, cex = 0.75)
+  cropped, axes = FALSE, palette = class_colors
 )
 ```
 
