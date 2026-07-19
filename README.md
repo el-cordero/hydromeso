@@ -1,5 +1,5 @@
 
-# hydromeso
+# hydromeso <img src="man/figures/logo.png" align="right" height="139" alt="hydromeso package logo showing three river mesohabitats" />
 
 <!-- badges: start -->
 

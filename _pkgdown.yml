@@ -9,6 +9,10 @@ template:
   bslib:
     primary: "#245B6B"
     link-color: "#176B87"
+  opengraph:
+    image:
+      src: man/figures/logo.png
+      alt: "hydromeso package logo showing three river mesohabitats"
 
 home:
   title: "hydromeso: fluvial mesohabitat classification in R"
