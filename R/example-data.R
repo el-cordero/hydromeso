@@ -29,25 +29,41 @@ mesohabitat_example_vector <- function() {
   terra::vect(hydromeso_example, geom = c("x", "y"), crs = "EPSG:32615")
 }
 
-#' Create synthetic example hydraulic rasters
+#' Load example HEC-RAS hydraulic rasters
 #'
-#' Creates tiny projected depth and velocity rasters that jointly exercise all
-#' eight default classes. No files are written.
+#' Loads a compact pair of depth and velocity GeoTIFFs derived from the 31 May
+#' 2022 HEC-RAS model output used by Cordero and Harris (Preprint). The sample
+#' shows the Big Blue-Kansas Rivers confluence near Manhattan, Kansas. Source
+#' cells were cropped to the manuscript's detailed visualization extent,
+#' aggregated from 3-foot to 18-foot cells, and converted to metres and metres
+#' per second. The raster geometry remains in the source project's documented
+#' NAD 1983 (CORS96) StatePlane Kansas North coordinate system.
 #'
-#' @return A named list with `depth` and `velocity` `SpatRaster` objects.
+#' @param paths Logical. If `FALSE` (default), return loaded `SpatRaster`
+#'   objects. If `TRUE`, return their installed GeoTIFF paths.
+#' @return A named list with `depth` and `velocity` rasters or file paths.
+#' @references Cordero, E. and Harris, A. (Preprint). *Semi-Supervised and
+#' Supervised Machine Learning Approaches to Predicting Fluvial Mesohabitats
+#' from Satellite Data*. SSRN. \doi{10.2139/ssrn.7100727}.
 #' @examples
 #' x <- mesohabitat_example_rasters()
 #' classify_mesohabitat_raster(x$depth, x$velocity)
 #' @export
-mesohabitat_example_rasters <- function() {
-  depth <- terra::rast(
-    nrows = 2, ncols = 4, xmin = 500000, xmax = 500040,
-    ymin = 4400000, ymax = 4400020, crs = "EPSG:32615"
+mesohabitat_example_rasters <- function(paths = FALSE) {
+  if (!is.logical(paths) || length(paths) != 1L || is.na(paths)) {
+    stop("`paths` must be TRUE or FALSE.", call. = FALSE)
+  }
+  raster_paths <- c(
+    depth = system.file(
+      "extdata", "hecras", "big_blue_kansas_depth_m.tif",
+      package = "hydromeso", mustWork = TRUE
+    ),
+    velocity = system.file(
+      "extdata", "hecras", "big_blue_kansas_velocity_m_s.tif",
+      package = "hydromeso", mustWork = TRUE
+    )
   )
-  terra::values(depth) <- c(0.2, 0.8, 1.5, 0.2, 0.2, 0.8, 0.8, 1.5)
-  velocity <- terra::rast(depth)
-  terra::values(velocity) <- c(0.1, 0.1, 0.1, 0.4, 0.8, 0.4, 0.8, 0.8)
-  names(depth) <- "depth_m"; names(velocity) <- "velocity_m_s"
-  list(depth = depth, velocity = velocity)
+  if (paths) return(as.list(raster_paths))
+  list(depth = terra::rast(raster_paths[["depth"]]),
+       velocity = terra::rast(raster_paths[["velocity"]]))
 }
-

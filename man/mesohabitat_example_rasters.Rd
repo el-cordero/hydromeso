@@ -2,18 +2,32 @@
 % Please edit documentation in R/example-data.R
 \name{mesohabitat_example_rasters}
 \alias{mesohabitat_example_rasters}
-\title{Create synthetic example hydraulic rasters}
+\title{Load example HEC-RAS hydraulic rasters}
 \usage{
-mesohabitat_example_rasters()
+mesohabitat_example_rasters(paths = FALSE)
+}
+\arguments{
+\item{paths}{Logical. If \code{FALSE} (default), return loaded \code{SpatRaster}
+objects. If \code{TRUE}, return their installed GeoTIFF paths.}
 }
 \value{
-A named list with \code{depth} and \code{velocity} \code{SpatRaster} objects.
+A named list with \code{depth} and \code{velocity} rasters or file paths.
 }
 \description{
-Creates tiny projected depth and velocity rasters that jointly exercise all
-eight default classes. No files are written.
+Loads a compact pair of depth and velocity GeoTIFFs derived from the 31 May
+2022 HEC-RAS model output used by Cordero and Harris (Preprint). The sample
+shows the Big Blue-Kansas Rivers confluence near Manhattan, Kansas. Source
+cells were cropped to the manuscript's detailed visualization extent,
+aggregated from 3-foot to 18-foot cells, and converted to metres and metres
+per second. The raster geometry remains in the source project's documented
+NAD 1983 (CORS96) StatePlane Kansas North coordinate system.
 }
 \examples{
 x <- mesohabitat_example_rasters()
 classify_mesohabitat_raster(x$depth, x$velocity)
+}
+\references{
+Cordero, E. and Harris, A. (Preprint). \emph{Semi-Supervised and
+Supervised Machine Learning Approaches to Predicting Fluvial Mesohabitats
+from Satellite Data}. SSRN. \doi{10.2139/ssrn.7100727}.
 }

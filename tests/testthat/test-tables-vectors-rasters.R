@@ -95,3 +95,22 @@ test_that("explicit unit conversion is correct", {
   expect_equal(got$depth, 0.3048)
   expect_equal(got$velocity, 0.3048)
 })
+
+test_that("packaged HEC-RAS rasters are real, aligned metric examples", {
+  paths <- mesohabitat_example_rasters(paths = TRUE)
+  expect_true(all(file.exists(unlist(paths))))
+
+  x <- mesohabitat_example_rasters()
+  expect_s4_class(x$depth, "SpatRaster")
+  expect_s4_class(x$velocity, "SpatRaster")
+  expect_true(terra::compareGeom(x$depth, x$velocity, stopOnError = FALSE))
+  expect_equal(names(x$depth), "depth_m")
+  expect_equal(names(x$velocity), "velocity_m_s")
+  expect_equal(c(terra::nrow(x$depth), terra::ncol(x$depth)), c(230L, 445L))
+  expect_gt(terra::global(x$depth, "max", na.rm = TRUE)[1, 1], 1.37)
+  expect_gt(terra::global(x$velocity, "max", na.rm = TRUE)[1, 1], 0.61)
+  expect_equal(nrow(terra::freq(classify_mesohabitat_raster(
+    x$depth, x$velocity
+  ))), 8L)
+  expect_error(mesohabitat_example_rasters(paths = NA), "TRUE or FALSE")
+})
